@@ -25,7 +25,6 @@ snake_speed = 15
 font_style = pygame.font.SysFont(None, 25)
 score_font = pygame.font.SysFont(None, 35)
 
-
 def score(score):
     value = score_font.render("Your Score: " + str(score), True, white)
     display.blit(value, [0, 0])
@@ -72,8 +71,8 @@ def gameLoop():
                         game_close = False
                         logging.warning("Player chose to quit")
                     if event.key == pygame.K_p:
-                        gameLoop()
                         logging.warning("Player chose to play the game again")
+                        gameLoop()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -127,11 +126,12 @@ def gameLoop():
             foody = round(random.randrange(
                 0, display_height - snake_block) / 10.0) * 10.0
             Length_of_snake += 1
+            logging.warning("Player has scored")
+            logging.warning("Placing new food location")
 
         clock.tick(snake_speed)
 
     pygame.quit()
     quit()
-
 
 gameLoop()
